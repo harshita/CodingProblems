@@ -2,7 +2,6 @@
  * Created with IntelliJ IDEA.
  * Author: hkarande
  * Date: 10/17/13
- * Time: 4:59 PM
  * Program to find all prime numbers upto a given limit using Sieve of Eratosthenes
  * Refer to http://en.wikipedia.org/wiki/Sieve_of_Eratosthenes for more information
  */
