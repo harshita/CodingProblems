@@ -8,16 +8,11 @@ import java.util.Scanner;
 public class LinkedListTest {
     public static void main(String args[]) {
         LinkedList a = new LinkedList(1);
-        LinkedList b = a.addNode(2);
-        LinkedList c = b.addNode(3);
-        LinkedList d = c.addNode(4);
-        LinkedList e = d.addNode(5);
-        LinkedList f = e.addNode(6);
-        LinkedList g = f.addNode(7);
-        LinkedList h = g.addNode(8);
-        LinkedList i = h.addNode(9);
-        LinkedList j = i.addNode(10);
-
+        LinkedList t = a;
+        int numElements = 10;
+        for (int i = 2; i <= numElements; i++) {
+            t = t.addNode(i);
+        }
 
         Scanner scan = new Scanner(System.in);
         System.out.println("Enter N: ");
