@@ -119,6 +119,60 @@ public class StringOperations {
         }
     }
 
+    /*
+    Given a string (for example: "a?bc?def?g"),
+    this method generates all the possible strings by replacing ? with 0 and 1.
+     */
+    public static void replaceQuestionMarksWithBinaryStrings(String str) {
+        int count = 0;
+        char[] strArray = str.toCharArray();
+
+        //Get the count of question marks
+        for (int i=0; i < strArray.length; i++) {
+            if(strArray[i]=='?')
+                count += 1;
+
+        }
+
+        //Run the for loop from 0 to 2^count-1
+        for (int j=0 ; j<new Double(Math.pow(2, count)).intValue(); j++) {
+            String binary = StringOperations.decimalToBinary(j);
+
+            int zeroestofill = count - binary.length();
+            int ctr1 = 0;
+            int ctr2 = 0;
+
+            char[] tempStrArray = new String(str).toCharArray();
+            for (int k = 0; k < tempStrArray.length; k++) {
+                if (tempStrArray[k]=='?') {
+                    if (ctr1 < zeroestofill) {
+                         tempStrArray[k] = '0';
+                         ctr1++;
+                    }
+                    else {
+                        tempStrArray[k] = binary.charAt(ctr2);
+                        ctr2++;
+                    }
+                }
+            }
+            System.out.println(tempStrArray);
+        }
+
+
+
+
+
+    }
+
+    //Convert dec to binary.
+    public static String decimalToBinary(int dec) {
+       int remainder = dec % 2;
+       if (dec >> 1 >= 1)
+           return decimalToBinary(dec >> 1) + Integer.valueOf(remainder).toString();
+
+       return Integer.valueOf(remainder).toString();
+    }
+
 
 
 
@@ -141,7 +195,18 @@ public class StringOperations {
             {'S', 'E', 'B', 'S', 'E'}
         };
 
+
         StringOperations.getOccurrencesIn2DArray(strArray, "SNAKES", 4, 5);
+
+        System.out.println();
+
+
+        // Generate all possible strings by substituting ? in the strings with 0 and 1
+        System.out.println("Please enter a string that you want to perform substitutions on: ");
+        scan= new Scanner(System.in);
+        strInput = scan.nextLine();
+        System.out.println("Possibilities are: ");
+        StringOperations.replaceQuestionMarksWithBinaryStrings(strInput);
 
 
     }
